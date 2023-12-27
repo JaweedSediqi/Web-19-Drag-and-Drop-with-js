@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="new.css">
+</head>
+<body>
+    <div class="containner">
+        <div id="left">
+            <div class="list" draggable="true">
+                <img src="cxxxxxxxxx.png" width="45px" id="img">
+                List Item 1
+            </div>
+            <div class="list" draggable="true">
+                <img src="cxxxxxxxxx.png" width="45px" id="img">
+                List Item 2
+            </div>
+            <div class="list" draggable="true">
+                <img src="cxxxxxxxxx.png" width="45px" id="img">
+                List Item 3
+            </div>
+            <div class="list" draggable="true">
+                <img src="cxxxxxxxxx.png" width="45px" id="img">
+                List Item 4
+            </div>
+        </div>
+        <div id="right"></div>
+    </div>
+    <script>
+        const lists=document.getElementsByClassName('list');
+        const right=document.getElementById('right');
+        const left=document.getElementById('left');
+
+        for (let index = 0; index < lists.length; index++) {
+            lists[index].addEventListener('dragstart',function(e){
+                let selected=e.target;
+
+                right.addEventListener('dragover',function(e){
+                    e.preventDefault();
+                });
+
+                right.addEventListener('drop',function(e){
+                    right.appendChild(selected);
+                    selected=null
+                });
+                left.addEventListener('dragover',function(e){
+                    e.preventDefault();
+                });
+                
+                left.addEventListener('drop',function(e){
+                    left.appendChild(selected);
+                    selected=null
+                })
+            })
+            
+        }
+    </script>
+</body>
+</html>
